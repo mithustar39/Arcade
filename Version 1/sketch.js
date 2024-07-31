@@ -1,9 +1,7 @@
 /*
 Forgotten Hero
 Mithun Dhanasuthan
-April,2024
 dodge the obstacles and use platforms to dodge as well as Tom is trying to get to the other side to save Jerry using Arrow Keys to move
-
 */
 
 // https://p5play.org/learn
@@ -21,13 +19,19 @@ function setup() {
 
   //player
   player = new Sprite(playerImage, 50, 50, 50, 50);
-  player.visibility   = false;
+  player.visible = false;
+  player.x=900;
+  player.y=500;
+
   //creating platform for player to stand on
-  platform = rect(width,height/1.04)
+  platform = new Sprite(width/2,550,width,10)
+  platform.colour = 'white';
+  platform.collider = 'k';
 }
 
 function draw() {
   background(0); // try removing this line and see what happens!
+  console.log(mouse.x,mouse.y)
 
   if (gameState === "instructionScreen") {
     instructionScreen();
@@ -42,6 +46,7 @@ function draw() {
   } else if (gameState === "loseScreen") {
     loseScreen();
   }
+
 }
 
 function instructionScreen() {
@@ -68,6 +73,20 @@ function instructionScreen() {
 
 function levelOne() {
   background(levelBackground);
+  //reseting player to positioin
+  reset();
+
+  //adding gravity to the player
+  world.gravity.y = 1;  
+
+  if (kb.pressing('left')){
+    player.x-=10;
+  } else if(kb.pressing('right')){
+    player.x+=10;
+  } else if(kb.pressing('up')){
+    player.y-=10;
+  } 
+
 }
 
 function levelTwo() {
@@ -84,4 +103,10 @@ function winScreen() {
 
 function loseScreen() {
 
+}
+
+function reset(){
+  player.x=900;
+  player.y=500;
+  player.visible = true;
 }
