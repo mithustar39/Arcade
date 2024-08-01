@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import Footer from './Footer';
 
 const BusinessScreen = () => {
   const [event, setEvent] = useState('');
@@ -47,7 +48,9 @@ const BusinessScreen = () => {
         onChangeText={setDiscounts}
       />
       <Button title="Submit" onPress={handleSubmit} />
+      <Footer />
     </View>
+    
   );
 };
 
