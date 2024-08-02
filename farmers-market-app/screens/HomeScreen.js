@@ -1,45 +1,37 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
-import Footer from './Footer';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Happiness Farms</Text>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Business"
-          onPress={() => navigation.navigate('Business')}
-          color="#4CAF50"
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          title="User"
-          onPress={() => navigation.navigate('Login')}
-          color="#4CAF50"
-        />
-      </View>
-       <Footer />
-    </ScrollView>
+    <View style={styles.container}>
+      <Text style={styles.title}>What are you coming as?</Text>
+      <Button
+        title="User"
+        onPress={() => navigation.navigate('UserStack')}
+        color="#4CAF50"
+      />
+      <Button
+        title="Business"
+        onPress={() => navigation.navigate('BusinessStack')}
+        color="#FF9800"
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
     padding: 16,
+    backgroundColor: '#FFFFFF',
   },
   title: {
-    fontSize: 24,
-    marginBottom: 20,
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
     color: '#4CAF50',
-  },
-  buttonContainer: {
-    marginVertical: 10,
+    marginBottom: 20,
   },
 });
 
